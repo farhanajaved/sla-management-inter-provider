@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-contract TokenizedIdentity {
+contract decentralizedMarketplace {
     mapping(address => bool) public isConsumerRegistered;
     mapping(address => bool) public isProviderRegistered;
     mapping(address => bool) public hasTokenizedIdentity;
