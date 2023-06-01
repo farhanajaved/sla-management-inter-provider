@@ -1,0 +1,129 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "checkBreach",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					},
+					{
+						"internalType": "int256",
+						"name": "",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "consumerSLAs",
+				"outputs": [
+					{
+						"internalType": "bytes",
+						"name": "kpi1",
+						"type": "bytes"
+					},
+					{
+						"internalType": "int256",
+						"name": "kpi2",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "breaches",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "_kpi1",
+						"type": "bytes"
+					},
+					{
+						"internalType": "int256",
+						"name": "_kpi2",
+						"type": "int256"
+					}
+				],
+				"name": "setSLA",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Smart Contract/BreachSLA.sol": "BreachSLA"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Smart Contract/BreachSLA.sol": {
+			"keccak256": "0xb37cae0216203108396562a74dd62ab0c215f824588efb167f01682666b132a2",
+			"urls": [
+				"bzz-raw://f043a42675e15a165cba78b79a7768028303db0a25f864929b9cd55c360c6bc1",
+				"dweb:/ipfs/QmYBYXjj4kdCxHp2SbroTkWaoniCAE7fAKGho2RcnUNSUC"
+			]
+		},
+		"Smart Contract/DecentralizedMarketplace.sol": {
+			"keccak256": "0x415733b5217f32d78be40ab9fdc17ed54a6f723be398cf21dce041489a9a057a",
+			"urls": [
+				"bzz-raw://5ee14fcb244b0b5f92c5353682a46ae1f65a1ff3e253fe216f102ea194ac6619",
+				"dweb:/ipfs/QmXJ9Vq9UonosekBtGByJY7b24BvaGc7n6t9N3QwreNzNy"
+			]
+		},
+		"Smart Contract/ReverseAuction.sol": {
+			"keccak256": "0xe6111c6f8084f7118294762f532d59a66b1809de67c196088c01f6e1e3453c3f",
+			"urls": [
+				"bzz-raw://313854e479e7a95b497d77a1e7d6aa9d9c65b1566fc392166065e5d7dd4c4b08",
+				"dweb:/ipfs/QmcwVajYsCjsnx1wQE5waViA8f2Hq7k5vodMGKmNndm5hc"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,933 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "lowestBid",
+						"type": "uint256"
+					}
+				],
+				"name": "AuctionEnded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "features",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"name": "AuctionStarted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "bid",
+						"type": "uint256"
+					}
+				],
+				"name": "BidPlaced",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "ChainlinkCancelled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "ChainlinkFulfilled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "ChainlinkRequested",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					}
+				],
+				"name": "ConsumerRegistered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "data",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "DataFetched",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "endpoint",
+						"type": "string"
+					}
+				],
+				"name": "EndpointSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "PaymentSent",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					}
+				],
+				"name": "ProviderRegistered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					}
+				],
+				"name": "RefundRequested",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "features",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "ServiceOffered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "ServicePurchased",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "provider",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					}
+				],
+				"name": "ServiceRejected",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "PENALTY_RATE",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "consumerAddress",
+						"type": "address"
+					}
+				],
+				"name": "acceptOffer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "askForFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "askForRefund",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "auctions",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "features",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "auctionEnded",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "winner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lowestBid",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "bytesData",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "consumerSLAs",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "breaches",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "consumers",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "isRegistered",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "hasPurchased",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "consumerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "providerAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					}
+				],
+				"name": "endAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "endpoint",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "fetchData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					}
+				],
+				"name": "getAuctionDetails",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_provider",
+						"type": "address"
+					}
+				],
+				"name": "getProviderPenalty",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "features",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "offerService",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "consumer",
+						"type": "address"
+					}
+				],
+				"name": "placeBid",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "providerPenalties",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "providerToConsumer",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "providers",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "serviceName",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "features",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isRegistered",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isServiceAvailable",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "providerAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "providerAddress",
+						"type": "address"
+					}
+				],
+				"name": "purchaseService",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "refundOption",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "registerConsumer",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "registerProvider",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_endpoint",
+						"type": "string"
+					}
+				],
+				"name": "setEndpoint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "hash",
+						"type": "string"
+					}
+				],
+				"name": "setIPFSHash",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "showData",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "features",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"name": "startAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "uintData",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Smart Contract/PenaltyBilling.sol": "PenaltyBilling"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@chainlink/contracts/src/v0.8/Chainlink.sol": {
+			"keccak256": "0x3e133ddc69d0909fbe338c34b70cbf8dd262c70fd670b3632424c1858de25105",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6fbfa4cee3ce9fe3f5be6eda7e3304263d77b514be0bf5fadffa24d3f654ad2d",
+				"dweb:/ipfs/QmTQmA4AJ9NookAyTg9DP6Mem6X8WSHJ5WjQJvqhE8K9qV"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/ChainlinkClient.sol": {
+			"keccak256": "0xa221ccfa4763977cc78c57e3a83d47f5aaf7c15535a2c20dba5f46af80fb3bd7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ba0f668a6f55a546ac1fe7fbf8539878a62811c1b0606fb4fadafb62f661e853",
+				"dweb:/ipfs/QmTUmXvjWQno67W4CUdkVyTRAwSKWrko8EPjtizzavNVLJ"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/ChainlinkRequestInterface.sol": {
+			"keccak256": "0xa8adfbd0326c982c38ea3808a4da52f0a51807241787c4bd28235bbe86707c04",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://364e3be6190a68fbe84e4ede560af3ccede8d36e40e91378b4de042202c6e86a",
+				"dweb:/ipfs/QmNpCP9j3FhBd1hDofg1uMCYiXBKNTU95n1Lxbnnj12oxw"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/ENSInterface.sol": {
+			"keccak256": "0xe51365458d82233a55f5ad4492a3b6bf56332d21cad6b0a5f21b8a026fcfd6d0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://40958fa820d41025822fe423111c74d5b8d0dfe1a30ae4fba4f6896a55fc2868",
+				"dweb:/ipfs/QmbwYCM5k6h43T6qQV8DEpUxv5uErVSTCD6Fqm5DMLDgNi"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/LinkTokenInterface.sol": {
+			"keccak256": "0xc7d7cd730d36825485ef4107d93c3ff18b9f3a5a00ea3d5988ba9a0bd70b10c5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8cb1064885ecbcd9c3adba779e190cb4a538e5d4d15aeccb67d3376bdffc94bd",
+				"dweb:/ipfs/QmcQHK6ewve7tFi4XXK65JthQg4kQzApQikWcURJjGt4iQ"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/OperatorInterface.sol": {
+			"keccak256": "0x79a7c77b8f87be6ef02a566765077ed599724b060a209f34f8907eec5615da68",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b6ed9275abc614a37a13f86c148f3a4341d955a6b52a1a655357505e0926caab",
+				"dweb:/ipfs/Qmaqgq3HiakdSBAe9NtGXYMxVFBjTkLbzyiiyjJUJ1g1M3"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/OracleInterface.sol": {
+			"keccak256": "0x3a86242e005bad9daf1b4794399a81ba373069355f38c8a07b58e57abc32513a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ba8fbc2ccf2b3dfc8249306b7dc63624a4ec6f6ee43649d631f7363710c763b6",
+				"dweb:/ipfs/QmePqh8R8EZMygYkawshsWArTrVA8VCdamLGV6ZZsVJgTz"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/interfaces/PointerInterface.sol": {
+			"keccak256": "0x42e5d62984f9d57bab7e32b2c6e3af86f4feb232ea2af6c822032fae88203bd7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://12ec80973bbc95f59ce3a46aadd7761df6e4131bda14a01a265d76a8e007dd5d",
+				"dweb:/ipfs/QmXwhsxjbkuXSHu6SX6tZxrQCXrdnJ4o2M7b3yFSgcWR1f"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/vendor/BufferChainlink.sol": {
+			"keccak256": "0x89388a631c16ad993e4d76d8d19e08ae98e1397f5dfdfb5f9c0b91015df4cf5d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://88cb96caa94128821daec5478c0f3646902007b81a0604b2e3ab79ea2f40b056",
+				"dweb:/ipfs/Qmd1nu9CpgouPmukNQpZThxKgPZAayXxqBfwbDVHfMrCrF"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/vendor/CBORChainlink.sol": {
+			"keccak256": "0x08bda450d4dc1d17147fd29810234d35e2c437f1a99be733cfa7ee516db08a48",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d47a793b314afe9cd82fcf05ffe4ebbfa5504c2decc83004edbb3b2069d4f0c3",
+				"dweb:/ipfs/Qmd2YLSiS8xeeXqireh6qJgTTwVY2VscZpv2cQBU8gkEJT"
+			]
+		},
+		"@chainlink/contracts/src/v0.8/vendor/ENSResolver.sol": {
+			"keccak256": "0x606bda5f3fa27be4cf04f6636dda443b7787b56e87ade988fca2e51d2147613d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://63b50d13ca97c4dd62738398bb2e423a36563b827b0af94c0e7a47cf0d4a2e6b",
+				"dweb:/ipfs/QmXjy7BmtnPeCLMaMnGGnsxDPGxohfDpYzP8PnUoh6gBGa"
+			]
+		},
+		"Smart Contract/DecentralizedMarketplace.sol": {
+			"keccak256": "0x415733b5217f32d78be40ab9fdc17ed54a6f723be398cf21dce041489a9a057a",
+			"urls": [
+				"bzz-raw://5ee14fcb244b0b5f92c5353682a46ae1f65a1ff3e253fe216f102ea194ac6619",
+				"dweb:/ipfs/QmXJ9Vq9UonosekBtGByJY7b24BvaGc7n6t9N3QwreNzNy"
+			]
+		},
+		"Smart Contract/MonitorOracle.sol": {
+			"keccak256": "0xb4c905dbba5efd63f554e50d0b9bb4183a82a67b84b71e9b0af0e9f8ea4f1b37",
+			"urls": [
+				"bzz-raw://e69b72c7f07283753f98f9e212298d484d1be105d7a7d38fc8ae3051d78edc6e",
+				"dweb:/ipfs/QmX7cGZVShrrnAEQXnKdmeCTrLoExXEhh3ateDEVnEXbEy"
+			]
+		},
+		"Smart Contract/PenaltyBilling.sol": {
+			"keccak256": "0xf5ab2ccee62097969607be65ece368adfcc0e6c404738f28de7d6db0f20cf9d8",
+			"urls": [
+				"bzz-raw://6b3eb75e9297cf0fef49df3efa89452ffbbaca8f5131b50a7ae75eba7b639352",
+				"dweb:/ipfs/QmTH7N7N4zbcKkr6k2MKfox63VsXTJLH6w8NJyCeRSeSa1"
+			]
+		},
+		"Smart Contract/ReverseAuction.sol": {
+			"keccak256": "0xe6111c6f8084f7118294762f532d59a66b1809de67c196088c01f6e1e3453c3f",
+			"urls": [
+				"bzz-raw://313854e479e7a95b497d77a1e7d6aa9d9c65b1566fc392166065e5d7dd4c4b08",
+				"dweb:/ipfs/QmcwVajYsCjsnx1wQE5waViA8f2Hq7k5vodMGKmNndm5hc"
+			]
+		}
+	},
+	"version": 1
+}
