@@ -8,7 +8,7 @@ This repository contains a collection of smart contracts that implement various 
 
 ### 1. decentralizedMarketplace.sol
 
-This contract implements a decentralized marketplace where consumers and providers can register, tokenize their identity, and interact to offer and purchase services. It includes features such as registration buttons, service listing, and identity management.
+This contract implements a decentralized marketplace where consumers and providers can register, tokenize their identity, and interact to offer and purchase services. It includes features such as registration buttons, service listing, and identity management. Also service providers can upload service catalougs on IPFS. And publish the hash on the smart contract for consumer to see. 
 
 ### 2. reverseAuction.sol
 
